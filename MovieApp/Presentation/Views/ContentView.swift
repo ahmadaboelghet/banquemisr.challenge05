@@ -9,16 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
+        TabView {
+            MovieListView(category: .nowPlaying)
+                .tabItem {
+                    Label("Now Playing", systemImage: "film")
+                }
 
-#Preview {
-    ContentView()
+            MovieListView(category: .popular)
+                .tabItem {
+                    Label("Popular", systemImage: "star")
+                }
+
+            MovieListView(category: .upcoming)
+                .tabItem {
+                    Label("Upcoming", systemImage: "calendar")
+                }
+        }
+    }
 }
